@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BakingApp</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="empty_view_text">Recipes is empty</string>
+    <string name="RECIPE_DATA_PREFERENCE_FILE">recipes_file</string>
+</resources>
