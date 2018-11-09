@@ -74,6 +74,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
                     fragment.setArguments(bundle);
                     if (context.getResources().getBoolean(R.bool.isTablet)){
                         FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.steps_frag, fragment, false);
+//                        Toast.makeText(context, bundle.isEmpty()+"", Toast.LENGTH_SHORT).show();
                     }else {
                         FragmentsUtil.replaceFragment((FragmentActivity) context, R.id.my_container, fragment, true);
                     }

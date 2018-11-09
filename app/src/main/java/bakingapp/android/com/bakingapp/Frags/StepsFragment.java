@@ -56,26 +56,27 @@ public class StepsFragment extends Fragment{
 
         Bundle bundle = getArguments();
         if (bundle != null) {
-            steps = bundle.getParcelable(Constants.STEP_PARCABLE);}
+            steps = bundle.getParcelable(Constants.STEP_PARCABLE);
+            description.setText(steps.getDescription());
+
+            String videoUrl = steps.getVideoUrl();
+
+            if (savedInstanceState != null) {
+                position = savedInstanceState.getLong(Constants.VIDEO_POSITION);
+            } else {
+                position = 0;
+            }
+
+            if (!(videoUrl.equals(""))) {
+                simpleExoPlayerView.setVisibility(View.VISIBLE);
+                initializePlayer(Uri.parse(videoUrl), position);
+            }
+        }
 
         if (getActivity().getResources().getBoolean(R.bool.isTablet)) {
-
-        } else {
-                description.setText(steps.getDescription());
-
-                String videoUrl = steps.getVideoUrl();
-
-                if (savedInstanceState != null) {
-                    position = savedInstanceState.getLong(Constants.VIDEO_POSITION);
-                } else {
-                    position = 0;
-                }
-
-                if (!(videoUrl.equals(""))) {
-                    simpleExoPlayerView.setVisibility(View.VISIBLE);
-                    initializePlayer(Uri.parse(videoUrl), position);
-                }
-            }
+            Toast.makeText(getContext(), "click", Toast.LENGTH_SHORT).show();
+//            Log.d("bundle",bundle.containsKey(Constants.STEP_PARCABLE)+"");
+        }
 
         return view;
     }
