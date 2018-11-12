@@ -12,18 +12,38 @@
         android:orientation="vertical"
         tools:context=".Activites.RecipeSteps">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textAllCaps="true"
-            android:padding="10dp"
-            android:textColor="@color/colorAccent"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:text="Integredients :-"
-            android:fontFamily="monospace"
-            style="@style/Base.TextAppearance.AppCompat.Medium"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:padding="10dp"
+                android:textColor="@color/colorAccent"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="Integredients :-"
+                android:fontFamily="monospace"
+                android:layout_centerVertical="true"
+                style="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+
+            <ImageButton
+                android:id="@+id/addToWidget"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@null"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_playlist_add"/>
+
+        </RelativeLayout>
+
 
         <View
             android:layout_width="match_parent"

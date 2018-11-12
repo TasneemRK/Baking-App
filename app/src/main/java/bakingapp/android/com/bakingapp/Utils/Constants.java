@@ -27,6 +27,8 @@ public interface Constants {
     public static final String VIDEO_URL = "videoURL";
     public static final String THUMBNAIL_URL = "thumbnailURL";
 
+    public static final String VIDEO_URL_KEY = "videoURL_key";
+    public static final String DESCRIP_KEY = "descrip_key";
 
     public static final String SHAERS_KEY= "shared_list";
 

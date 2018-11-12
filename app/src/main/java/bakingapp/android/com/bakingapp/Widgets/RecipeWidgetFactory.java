@@ -3,17 +3,15 @@ package bakingapp.android.com.bakingapp.Widgets;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import bakingapp.android.com.bakingapp.Models.Recipe;
+import bakingapp.android.com.bakingapp.Models.Integredients;
 import bakingapp.android.com.bakingapp.R;
 import bakingapp.android.com.bakingapp.Utils.Constants;
 import bakingapp.android.com.bakingapp.Utils.ConvertToDataset;
@@ -21,7 +19,7 @@ import bakingapp.android.com.bakingapp.Utils.ConvertToDataset;
 public class RecipeWidgetFactory implements RemoteViewsService.RemoteViewsFactory {
 
     private Context context;
-    private List<Recipe> recipes;
+    List<Integredients> integredients;
 
     public RecipeWidgetFactory(Context context) {
         this.context = context;
@@ -30,16 +28,19 @@ public class RecipeWidgetFactory implements RemoteViewsService.RemoteViewsFactor
 
     @Override
     public void onCreate() {
-//        recipes = Requests.GetRequest(context);
-
     }
 
     @Override
     public void onDataSetChanged() {
-        SharedPreferences sharedPreferences = context.getSharedPreferences(context.getString(R.string.RECIPE_DATA_PREFERENCE_FILE), Context.MODE_PRIVATE);
-        Set<String> set = sharedPreferences.getStringSet(Constants.SHAERS_KEY,null);
-        if (set != null){
-            recipes = ConvertToDataset.convertToList(set);
+        SharedPreferences sharedPreferences = context.getSharedPreferences(context.getString(R.string.INTEGREDIENT_DATA_PREFERENCE_FILE), Context.MODE_PRIVATE);
+        Set<String> set = sharedPreferences.getStringSet(Constants.SHAERS_KEY, null);
+        if (set != null) {
+            integredients = ConvertToDataset.convertToList(set);
+            if (integredients != null) {
+                Log.d("widgetwidgetwidget",integredients.size()+"");
+            }else {
+                Log.d("widgetwidgetwidget","empty integ");
+            }
         }
     }
 
@@ -50,19 +51,22 @@ public class RecipeWidgetFactory implements RemoteViewsService.RemoteViewsFactor
 
     @Override
     public int getCount() {
-       return recipes.size();
+        if (integredients != null)
+        return integredients.size();
+        return 0;
     }
 
     @Override
     public RemoteViews getViewAt(int position) {
         RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget_item);
-        remoteViews.setTextViewText(R.id.widget_item_name,recipes.get(position).getName());
-        remoteViews.setTextViewText(R.id.widget_item_servings,"Servings : " + recipes.get(position).getServings()+"");
+        remoteViews.setTextViewText(R.id.widget_quantity, integredients.get(position).getQuantity() + "");
+        remoteViews.setTextViewText(R.id.widget_measure, integredients.get(position).getMeasure());
+        remoteViews.setTextViewText(R.id.widget_ingredient, integredients.get(position).getIngredient());
         Bundle bundle = new Bundle();
-        bundle.putInt("position",position);
+        bundle.putParcelable("int_parc", integredients.get(position));
         Intent intent = new Intent();
         intent.putExtras(bundle);
-        remoteViews.setOnClickFillInIntent(R.id.widget_item_btn,intent);
+        remoteViews.setOnClickFillInIntent(R.id.widget_item, intent);
         return remoteViews;
     }
 

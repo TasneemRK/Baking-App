@@ -8,24 +8,25 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import bakingapp.android.com.bakingapp.Models.Integredients;
 import bakingapp.android.com.bakingapp.Models.Recipe;
 
 public class ConvertToDataset {
 
-    public static Set<String> convertToSet(List<Recipe> recipes){
+    public static Set<String> convertToSet(List<Integredients> integredients){
         Set<String> dataSet = new HashSet<>();
         Gson gson = new Gson();
-        for (int i = 0; i < recipes.size(); i++) {
-            Recipe recipe = recipes.get(i);
-            String json =gson.toJson(recipe);
+        for (int i = 0; i < integredients.size(); i++) {
+            Integredients integredients1 = integredients.get(i);
+            String json =gson.toJson(integredients1);
             dataSet.add(json);
         }
         return dataSet;
     }
 
 
-    public static List<Recipe> convertToList(Set<String> dataSet){
-        List<Recipe> recipes = new ArrayList<>();
+    public static List<Integredients> convertToList(Set<String> dataSet){
+        List<Integredients> integredients = new ArrayList<>();
         Gson gson = new Gson();
             Iterator<String> iterator;
             String response;
@@ -33,13 +34,13 @@ public class ConvertToDataset {
                 iterator = dataSet.iterator();
                 while (iterator.hasNext()){
                     response = iterator.next();
-                    Recipe recipe = gson.fromJson(response,Recipe.class);
-                    recipes.add(recipe);
+                    Integredients integredients1 = gson.fromJson(response,Integredients.class);
+                    integredients.add(integredients1);
                 }
 
 
         }
 
-        return recipes;
+        return integredients;
     }
 }

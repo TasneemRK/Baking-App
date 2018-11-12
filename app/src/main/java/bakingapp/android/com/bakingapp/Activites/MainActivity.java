@@ -36,7 +36,6 @@ import bakingapp.android.com.bakingapp.Models.Recipe;
 import bakingapp.android.com.bakingapp.Models.Steps;
 import bakingapp.android.com.bakingapp.R;
 import bakingapp.android.com.bakingapp.Utils.Constants;
-import bakingapp.android.com.bakingapp.Utils.ConvertToDataset;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -49,8 +48,6 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.recipeRecycleView)
     RecyclerView recipe_recycleview;
 
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
 //        modelView = ViewModelProviders.of(this).get(RecipeModelView.class);
 
-        sharedPreferences = this.getSharedPreferences(getString(R.string.RECIPE_DATA_PREFERENCE_FILE), Context.MODE_PRIVATE);
-        editor = sharedPreferences.edit();
+
 
 
         ButterKnife.bind(this);
@@ -115,9 +111,6 @@ public class MainActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
-
-                editor.putStringSet(Constants.SHAERS_KEY, ConvertToDataset.convertToSet(recipes));
-                editor.commit();
                 adapter.setRecipes(recipes);
             }
         }, new Response.ErrorListener() {

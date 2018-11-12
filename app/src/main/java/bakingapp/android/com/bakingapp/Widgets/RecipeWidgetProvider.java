@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import bakingapp.android.com.bakingapp.Activites.MainActivity;
 import bakingapp.android.com.bakingapp.Activites.RecipeSteps;
+import bakingapp.android.com.bakingapp.Frags.IntegredientsFragment;
+import bakingapp.android.com.bakingapp.Models.Integredients;
 import bakingapp.android.com.bakingapp.R;
 
 /**
@@ -27,7 +29,7 @@ public class RecipeWidgetProvider extends AppWidgetProvider {
         Intent intent  = new Intent(context,RecipService.class);
         views.setRemoteAdapter(R.id.widget_grid_view,intent);
 
-        Intent intent1 = new Intent(context, MainActivity.class);
+        Intent intent1 = new Intent(context, IntegredientsFragment.class);
         PendingIntent pendingIntent =PendingIntent.getActivity(context,1,intent1,PendingIntent.FLAG_UPDATE_CURRENT);
         views.setPendingIntentTemplate(R.id.widget_grid_view,pendingIntent);
         views.setEmptyView(R.id.widget_grid_view,R.id.empty_view);

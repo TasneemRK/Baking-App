@@ -4,49 +4,38 @@
     android:background="#fff"
     android:layout_margin="3dp"
     android:padding="5dp"
+    android:id="@+id/widget_item"
     android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:id="@+id/linear_lay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true">
+    <TextView
+    android:id="@+id/widget_quantity"
+    android:text="2"
+    android:padding="5dp"
+        android:textColor="#000"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+
+    android:layout_alignParentStart="true"
+    android:layout_alignParentLeft="true"/>
 
     <TextView
+        android:id="@+id/widget_measure"
+        android:padding="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="name"
-        android:padding="5dp"
-        android:textStyle="bold"
-        android:textColor="@color/colorPrimaryDark"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:id="@+id/widget_item_name"/>
+        android:text="cup"
+        android:textColor="#000"
+        android:layout_toEndOf="@id/widget_quantity"/>
 
     <TextView
+        android:id="@+id/widget_ingredient"
+        android:padding="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Servings : "
-        android:padding="5dp"
-        android:textColor="@color/colorPrimary"
-        android:textStyle="bold"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        android:id="@+id/widget_item_servings"/>
-
-    </LinearLayout>
-
-    <ImageButton
-        android:id="@+id/widget_item_btn"
-        android:layout_margin="5dp"
-        android:src="@drawable/ic_keyboard_arrow_right"
-        android:background="@null"
-        android:layout_centerVertical="true"
-        android:layout_width="40dp"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_height="wrap_content" />
+        android:text="hhhhhhhhhhhhhhhhhhhh"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:layout_alignParentRight="true"/>
 
 </RelativeLayout>
