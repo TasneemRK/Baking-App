@@ -73,10 +73,6 @@ public class StepsFragment extends Fragment {
             }
         }
 
-        if (getActivity().getResources().getBoolean(R.bool.isTablet)) {
-            Toast.makeText(getContext(), "click", Toast.LENGTH_SHORT).show();
-        }
-
         return view;
     }
 
@@ -88,6 +84,7 @@ public class StepsFragment extends Fragment {
             steps = savedInstanceState.getParcelable(Constants.VIDEO_URL_KEY);
         } else {
             position = 0;
+            if (bundle != null)
             steps =bundle.getParcelable(Constants.STEP_PARCABLE);
         }
     }
